@@ -39,17 +39,17 @@ function scrub(e) {
 }
 
 function openFullscreen() {
-  if (video.requestFullscreen) {
-    video.requestFullscreen();
-  } else if (video.mozRequestFullScreen) {
+  if (player.requestFullscreen) {
+    player.requestFullscreen();
+  } else if (player.mozRequestFullScreen) {
     /* Firefox */
-    video.mozRequestFullScreen();
-  } else if (video.webkitRequestFullscreen) {
+    player.mozRequestFullScreen();
+  } else if (player.webkitRequestFullscreen) {
     /* Chrome, Safari and Opera */
-    video.webkitRequestFullscreen();
-  } else if (video.msRequestFullscreen) {
+    player.webkitRequestFullscreen();
+  } else if (player.msRequestFullscreen) {
     /* IE/Edge */
-    video.msRequestFullscreen();
+    player.msRequestFullscreen();
   }
 }
 
