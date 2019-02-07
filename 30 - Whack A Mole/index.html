@@ -82,6 +82,10 @@
       }
 
       function displayTime(seconds) {
+        if (seconds === '-1') {
+          time.textContent = `Time's up!`;
+          return;
+        }
         time.textContent = seconds + ' seg';
       }
 
@@ -93,6 +97,7 @@
           const secondsLeft = seconds--;
           if (secondsLeft < 0) {
             clearInterval(countDown);
+            displayTime('-1');
             return;
           }
           displayTime(secondsLeft);
