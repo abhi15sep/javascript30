@@ -3,23 +3,7 @@ const timerDisplay = document.querySelector('.display__time-left');
 const endTime = document.querySelector('.display__end-time');
 const buttons = document.querySelectorAll('[data-time]');
 
-function timer(seconds) {
-  // clear any existing one
-  clearInterval(countDown);
-  const now = Date.now();
-  const then = now + seconds * 1000;
-  displayTimeLeft(seconds);
-  displayEndTime(then);
-  countDown = setInterval(() => {
-    const secondsLeft = Math.round((then - Date.now()) / 1000);
-    if (secondsLeft < 0) {
-      clearInterval(countDown);
-      return;
-    }
-    displayTimeLeft(secondsLeft);
-  }, 1000);
-}
-
+// Function that gets the seconds left, and then converts into min:secs and displays it
 function displayTimeLeft(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainerSeconds = seconds % 60;
@@ -30,6 +14,7 @@ function displayTimeLeft(seconds) {
   timerDisplay.textContent = display;
 }
 
+// Function that gets a timestamp, converts into date, and display the end time
 function displayEndTime(time) {
   const end = new Date(time);
   const hour = end.getHours();
@@ -38,6 +23,27 @@ function displayEndTime(time) {
   endTime.textContent = `Be back at ${hour}:${
     minutes < 10 ? '0' : ''
   }${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Timer, gets the seconds left
+function timer(seconds) {
+  // clear any existing countdown that is running
+  clearInterval(countDown);
+  const now = Date.now();
+  // get final time
+  const then = now + seconds * 1000;
+  displayTimeLeft(seconds);
+  displayEndTime(then);
+  countDown = setInterval(() => {
+    // seconds left will be the end time - current time in secs
+    const secondsLeft = Math.round((then - Date.now()) / 1000);
+    // if reached, clear countdown
+    if (secondsLeft < 0) {
+      clearInterval(countDown);
+      return;
+    }
+    displayTimeLeft(secondsLeft);
+  }, 1000);
 }
 
 function startTimer() {
