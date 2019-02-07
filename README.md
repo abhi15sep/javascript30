@@ -4,4 +4,4 @@
 
 ### All the 30 exercises:
 
-[01 - JavaScript Drum Kit](./01 - JavaScript Drum Kit)
+**[01 - JavaScript Drum Kit]**(#./01 - JavaScript Drum Kit)
